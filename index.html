@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KodeCat</title>
+
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -188,38 +194,61 @@
 
     /* timeline */
     .timeline {
-      --item-width: 55;
-      --item-margin: 2rem;
+      --item-width: 90;
+      --item-top: 4rem;
+      --item-bottom: 2rem;
       --counter-size: 3rem;
       --counter-border: 5px;
+      padding: 0 0.5rem;
       margin-top: 3rem;
     }
 
     .timeline div {
       position: relative;
-      margin-top: var(--counter-size);
-      margin-left: var(--item-margin);
-      counter-increment: timeline;
+      width: calc(var(--item-width) * 1%);
+      margin-top: 0;
+      padding-top:    var(--item-top);
+      padding-bottom: var(--item-bottom);
+    }
+    .timeline div:nth-of-type(odd) {
+      margin-left: calc(100% - var(--item-width) * 1%);
+      padding-left: 1rem;
+    }
+    .timeline div:nth-of-type(even) {
+      margin-left: 0;
+      padding-right: 1rem;
     }
 
     .timeline div::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: calc(var(--item-margin) * -0.5);
-      width: var(--counter-border);
+      top: calc(var(--item-bottom) * -0.5);
+      width: calc((2 * var(--item-width) - 100) / var(--item-width) * 100% + var(--counter-size));
       height: 100%;
-      border-left: var(--counter-border) solid var(--brand-darker);
+      border-bottom: var(--counter-border) solid var(--brand-darker);
       pointer-events: none;
     }
+    .timeline div:nth-of-type(odd)::before {
+      left: calc(var(--counter-size) * -0.5);
+      border-left: var(--counter-border) solid var(--brand-darker);
+    }
+    .timeline div:nth-of-type(even)::before {
+      left: auto;
+      right: calc(var(--counter-size) * -0.5);
+      border-right: var(--counter-border) solid var(--brand-darker);
+    }
+    .timeline div:first-child::before {
+      top: calc(var(--item-bottom) * 0.5);
+      height: calc(100% - var(--item-bottom));
+    }
     .timeline div:last-child::before {
-      display: none;
+      height: var(--item-bottom);
+      border-bottom: none;
     }
 
     .timeline div::after {
       position: absolute;
-      top: calc(var(--counter-size) * -1);
-      left: calc(var(--item-margin) * -1);
+      top: 0;
       content: attr(data-label);
 
       color: var(--text-secondary);
@@ -232,12 +261,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
+    }
+    .timeline div:nth-of-type(even)::after {
+      right: 0;
+      transform: translateX(var(--counter-size));
+      clip-path: polygon(100% 0%, calc(100% - 0.25 * var(--counter-size)) 50%, 100% 100%, calc(0.25 * var(--counter-size)) 100%, 0% 50%, calc(0.25 * var(--counter-size)) 0%);
+    }
+    .timeline div:nth-of-type(odd)::after {
+      left: 0;
+      transform: translateX(calc(var(--counter-size) * -1));
       clip-path: polygon(calc(100% - 0.25 * var(--counter-size)) 0%, 100% 50%, calc(100% - 0.25 * var(--counter-size)) 100%, 0% 100%, calc(0.25 * var(--counter-size)) 50%, 0% 0%);
     }
 
     @media only screen and (min-width: 800px) {
       .timeline {
+        --item-width: 55;
+        --item-top: 0;
+
         max-height: max(50vh, 30rem);
         overflow-x: hidden;
         overflow-y: auto;  /* in case overlay isn't supported */
@@ -245,54 +285,10 @@
         -ms-overflow-style: -ms-autohiding-scrollbar;
       }
 
-      .timeline div {
-        width: calc(var(--item-width) * 1%);
-        margin-top: 0;
-        margin-bottom: var(--item-margin);
-      }
-
-      .timeline div:nth-of-type(odd) {
-        margin-left: calc(100% - var(--item-width) * 1%);
-        padding-left: 1rem;
-      }
-      .timeline div:nth-of-type(even) {
-        margin-left: 0;
-        padding-right: 1rem;
-      }
-
-      .timeline div::before {
-        top: calc(var(--item-margin) * -0.5);
-        width: calc((2 * var(--item-width) - 100) / var(--item-width) * 100% + var(--counter-size));
-        height: calc(100% + var(--item-margin));
-        border-left: none;
-        border-bottom: var(--counter-border) solid var(--brand-darker);
-      }
-      .timeline div:nth-of-type(odd)::before {
-        left: calc(var(--counter-size) * -0.5);
-        border-left: var(--counter-border) solid var(--brand-darker);
-      }
-      .timeline div:nth-of-type(even)::before {
-        left: auto;
-        right: calc(var(--counter-size) * -0.5);
-        border-right: var(--counter-border) solid var(--brand-darker);
-      }
-      .timeline div:last-child::before {
-        display: block;
-        height: var(--item-margin);
-        border-bottom: none;
-      }
-
-      .timeline div::after {
-        top: 0;
-      }
       .timeline div:nth-of-type(even)::after {
-        left: auto;
-        right: 0;
         transform: translateX(100%);
-        clip-path: polygon(100% 0%, calc(100% - 0.25 * var(--counter-size)) 50%, 100% 100%, calc(0.25 * var(--counter-size)) 100%, 0% 50%, calc(0.25 * var(--counter-size)) 0%);
       }
       .timeline div:nth-of-type(odd)::after {
-        left: 0;
         transform: translateX(-100%);
       }
     }
@@ -329,7 +325,7 @@
 <body>
   <header>
     <h1><img class="logo" src="image/kodecat.png" alt="KodeCat logo"> KodeCat</h1>
-    <p>Coming soon to a computer near you</p>
+    <p></p>
   </header>
 
   <article id="services">
