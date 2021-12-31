@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KodeCat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    /* typography */
+    body {
+      --text-primary:   #000000;
+      --text-secondary: #ffffff;
+      --bg-primary:     #ebeefb;
+      --bg-secondary:   #ffffff;
+      --bg-break:       #333333;
+      --brand:          #7f90e2;
+      --brand-darker:   #5a70d9;
+
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      font-family: 'Arial', sans-serif;
+      font-size: 16pt;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+      font-weight: bold;
+    }
+    h1 { font-size: 96pt; line-height: 1.1; padding: 4rem 0; }
+    h2 { font-size: 48pt; line-height: 1.2; padding: 3rem 0; }
+    h3 { font-size: 36pt; line-height: 1.2; padding: 2rem 0; }
+    h4 { font-size: 18pt; line-height: 1.5; padding-bottom: 1rem; }
+
+    @media only screen and (max-width: 479px) {
+      h2 { font-size: 36pt; line-height: 1.2; padding: 3rem 0; }
+      h3 { font-size: 24pt; line-height: 1.2; padding: 2rem 0; }
+      h4 { font-size: 18pt; line-height: 1.5; padding-bottom: 1rem; }
+    }
+
+    p {
+      overflow-wrap: break-word;
+      padding-bottom: 1rem;
+    }
+
+    /* general layout */
+    @media only screen and (min-width: 1200px) {
+      html {
+        scroll-snap-type: y mandatory;
+      }
+    }
+
+    header, article           { min-height: 100vh;               }
+    header                    { background: var(--bg-primary);   }
+    article:nth-of-type(odd)  { background: var(--bg-secondary); }
+    article:nth-of-type(even) { background: var(--bg-primary);   }
+
+    header, article, footer, .break {
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scroll-snap-align: start;
+      padding: 0 1.5rem;
+    }
+
+    footer, .break {
+      min-height: min(20rem, 25vh);
+      align-content: center;
+      align-items: center;
+      background: var(--bg-break);
+      color: var(--text-secondary);
+    }
+
+    article, footer, .break {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    header, article {
+      --bottom-decoration-height: 3rem;
+      padding-bottom: calc(var(--bottom-decoration-height) + 1rem);
+    }
+
+    header::before, header::after,
+    article::before, article::after {
+      position: absolute;
+      content: '';
+      background: var(--brand);
+      height: var(--bottom-decoration-height);
+      bottom: 0;
+      transform: skew(-30deg);
+    }
+    header::before, article::before {
+      right: -3rem;
+      width: 50vw;
+    }
+    header::after, article::after {
+      right: 55vw;
+      width: 10vw;
+    }
+
+    /* header layout */
+    header {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header h1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: min(20vw, 96pt);
+      color: var(--brand);
+    }
+
+    header h1 img {
+      width:  min(14rem, 80vw);
+      height: min(14rem, 80vw);
+      object-fit: contain;
+    }
+
+    header p {
+      font-weight: bold;
+      font-size: 18pt;
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 1000px) {
+      header h1 {
+        flex-direction: row;
+      }
+      header h1 img {
+        margin-right: 2rem;
+      }
+      header p {
+        font-size: 32pt;
+      }
+    }
+
+    /* article layout */
+    article {
+      padding-top: 5rem;
+    }
+
+    .services, .product-info {
+      width: 40rem;
+      max-width: 100%;
+    }
+
+    .product-info h3 {
+      color: var(--brand);
+    }
+
+    .illustration {
+      display: block;
+      padding: 0 2rem;
+      width: 30rem;
+      max-width: 100%;
+    }
+
+    @media only screen and (max-width: 1199px) {
+      article {
+        flex-direction: column;
+        align-items: center;
+      }
+      .illustration {
+        margin: 3rem 0;
+        order: 999
+      }
+    }
+
+    /* timeline */
+    .timeline {
+      --item-width: 55;
+      --item-margin: 2rem;
+      --counter-size: 3rem;
+      --counter-border: 5px;
+      margin-top: 3rem;
+    }
+
+    .timeline div {
+      position: relative;
+      margin-top: var(--counter-size);
+      margin-left: var(--item-margin);
+      counter-increment: timeline;
+    }
+
+    .timeline div::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: calc(var(--item-margin) * -0.5);
+      width: var(--counter-border);
+      height: 100%;
+      border-left: var(--counter-border) solid var(--brand-darker);
+      pointer-events: none;
+    }
+    .timeline div:last-child::before {
+      display: none;
+    }
+
+    .timeline div::after {
+      position: absolute;
+      top: calc(var(--counter-size) * -1);
+      left: calc(var(--item-margin) * -1);
+      content: attr(data-label);
+
+      color: var(--text-secondary);
+      background: var(--brand-darker);
+      min-width: var(--counter-size);
+      padding: 0 1.5rem;
+      height: var(--counter-size);
+
+      overflow: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      clip-path: polygon(calc(100% - 0.25 * var(--counter-size)) 0%, 100% 50%, calc(100% - 0.25 * var(--counter-size)) 100%, 0% 100%, calc(0.25 * var(--counter-size)) 50%, 0% 0%);
+    }
+
+    @media only screen and (min-width: 800px) {
+      .timeline {
+        height: 50vh;
+        overflow-x: hidden;
+        overflow-y: auto;  /* in case overlay isn't supported */
+        overflow-y: overlay;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+      }
+
+      .timeline div {
+        width: calc(var(--item-width) * 1%);
+        margin-top: 0;
+        margin-bottom: var(--item-margin);
+      }
+
+      .timeline div:nth-of-type(odd) {
+        margin-left: calc(100% - var(--item-width) * 1%);
+        padding-left: 1rem;
+      }
+      .timeline div:nth-of-type(even) {
+        margin-left: 0;
+        padding-right: 1rem;
+      }
+
+      .timeline div::before {
+        top: calc(var(--item-margin) * -0.5);
+        width: calc((2 * var(--item-width) - 100) / var(--item-width) * 100% + var(--counter-size));
+        height: calc(100% + var(--item-margin));
+        border-left: none;
+        border-bottom: var(--counter-border) solid var(--brand-darker);
+      }
+      .timeline div:nth-of-type(odd)::before {
+        left: calc(var(--counter-size) * -0.5);
+        border-left: var(--counter-border) solid var(--brand-darker);
+      }
+      .timeline div:nth-of-type(even)::before {
+        left: auto;
+        right: calc(var(--counter-size) * -0.5);
+        border-right: var(--counter-border) solid var(--brand-darker);
+      }
+      .timeline div:last-child::before {
+        display: block;
+        height: var(--item-margin);
+        border-bottom: none;
+      }
+
+      .timeline div::after {
+        top: 0;
+      }
+      .timeline div:nth-of-type(even)::after {
+        left: auto;
+        right: 0;
+        transform: translateX(100%);
+        clip-path: polygon(100% 0%, calc(100% - 0.25 * var(--counter-size)) 50%, 100% 100%, calc(0.25 * var(--counter-size)) 100%, 0% 50%, calc(0.25 * var(--counter-size)) 0%);
+      }
+      .timeline div:nth-of-type(odd)::after {
+        left: 0;
+        transform: translateX(-100%);
+      }
+    }
+
+    /* footer layout */
+    footer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer .legal {
+      padding-top: 2rem;
+    }
+
+    /* scrollbar styling (Chromium) */
+    body {
+      overflow-y: auto;  /* in case overlay isn't supported */
+      overflow-y: overlay;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: none; }
+    ::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 100vw; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--brand-darker); }
+    /* scrollbar styling (Firefox)  */
+    * { scrollbar-color: var(--brand); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><img class="logo" src="image/kodecat.png" alt="KodeCat logo"> KodeCat</h1>
+    <p>Coming soon to a computer near you</p>
+  </header>
+
+  <article id="services">
+    <section class="services">
+      <h3>Services for databases, data processing and analysis, and AI-driven automation.</h3>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</p>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</p>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla!</p>
+    </section>
+    <img class="illustration" src="image/illustration-services.png" alt="" role="presentation">
+  </article>
+
+  <section class="break"><h2>Our products</h2></section>
+
+  <article id="audience-measurement">
+    <img class="illustration" src="image/illustration-audience.png" alt="" role="presentation">
+    <section class="product-info">
+      <h3>TV audience measurement</h3>
+      <p>Bla bla, we got great data.<br>Bla bla. Bla bla.</p>
+
+      <section class="timeline">
+        <div data-label="Feb 2022">
+          <h4>Market test</h4>
+          <p>Bla bla. Test panel in Algeria.</p>
+        </div>
+        <div data-label="Mar 2022">
+          <h4>Offer data in partnership with Global MMK.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="Apr 2022">
+          <h4>Open platform to broader market.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="Test">
+          <h4>Test: Long timeline.</h4>
+          <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p>
+        </div>
+        <div data-label="Test">
+          <h4>Test: Long timeline.</h4>
+          <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p>
+        </div>
+        <div data-label="Test">
+          <h4>Test: Long timeline.</h4>
+          <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p>
+        </div>
+        <div data-label="Test">
+          <h4>Test: Long timeline.</h4>
+          <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p>
+        </div>
+      </section>
+    </section>
+  </article>
+
+  <article id="matchmaker">
+    <section class="product-info">
+      <h3>MatchMaker: automated media tracking</h3>
+      <p>Easy and fast system to track Advertising Campaigns or inserts on relevant Media platforms with a full range of visual statistics.</p>
+
+      <section class="timeline">
+        <div data-label="2021 Q1">
+          <h4>Established partnership with Global MMK in the sports media market.</h4>
+        </div>
+        <div data-label="2021 Q3">
+          <h4>Text detection.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="2022 Q2">
+          <h4>Content classification and logo detection.</h4>
+          <p>Bla bla.</p>
+        </div>
+      </section>
+    </section>
+    <img class="illustration" src="image/illustration-matchmaker.png" alt="" role="presentation">
+  </article>
+
+  <article id="archive">
+    <img class="illustration" src="image/illustration-archive.png" alt="" role="presentation">
+    <section class="product-info">
+      <h3>Archive: database for performance-oriented developers</h3>
+      <p>Bla bla, it's fast.</p>
+
+      <section class="timeline">
+        <div data-label="2021 Q4">
+          <h4>Developed for internal use.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="2022 Q1">
+          <h4>Something something something.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="2022 Q2">
+          <h4>Something something something.</h4>
+          <p>Bla bla.</p>
+        </div>
+      </section>
+    </section>
+  </article>
+
+  <footer id="contact">
+    <div>
+      <p>
+        <i class="fa fa-envelope"></i>
+        <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#107;&#111;&#100;&#101;&#099;&#097;&#116;&#046;&#099;&#111;&#109;">&#105;&#110;&#102;&#111;&#064;&#107;&#111;&#100;&#101;&#099;&#097;&#116;&#046;&#099;&#111;&#109;</a>
+      </p>
+      <p>
+        <i class="fa fa-phone-alt"></i>
+        <a href="tel:&#048;&#049;&#050;&#051;&#052;&#053;&#054;&#055;&#056;&#057;">&#048;&#049;&#050;&#051;&#052;&#053;&#054;&#055;&#056;&#057;</a>
+      </p>
+    </div>
+    <p class="legal">
+      Copyright  © 2021 KodeCat. Legal shit, trademarks, registered names.
+    </p>
+  </footer>
+</body>
+</html>
