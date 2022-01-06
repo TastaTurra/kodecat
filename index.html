@@ -1,1 +1,468 @@
-<!DOCTYPE html><html lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta name="description" content="KodeCat. Services for databases, data processing and analysis, and AI-driven automation."> <title>KodeCat</title> <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png"> <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"> <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"> <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"> <style>*, *::before, *::after{box-sizing: border-box; margin: 0; padding: 0;}html, body{height: 100%;} body{--text-primary: #000000; --text-secondary: #ffffff; --bg-primary: #ebeefb; --bg-secondary: #ffffff; --bg-break: #333333; --brand: #7f90e2; --brand-darker: #5a70d9; color: var(--text-primary); -webkit-font-smoothing: antialiased; font-family: 'Arial', sans-serif; font-size: 16pt; line-height: 1.5;}h1, h2, h3, h4, h5, h6{overflow-wrap: break-word; font-weight: bold;}h1{font-size: 96pt; line-height: 1.1; padding: 4rem 0;}h2{font-size: 48pt; line-height: 1.2; padding: 3rem 0;}h3{font-size: 36pt; line-height: 1.2; padding: 2rem 0;}h4{font-size: 18pt; line-height: 1.5; padding-bottom: 1rem;}@media only screen and (max-width: 479px){h2{font-size: 36pt; line-height: 1.2; padding: 3rem 0;}h3{font-size: 24pt; line-height: 1.2; padding: 2rem 0;}h4{font-size: 18pt; line-height: 1.5; padding-bottom: 1rem;}}p{overflow-wrap: break-word; padding-bottom: 1rem;} @media only screen and (min-width: 1200px){html{scroll-snap-type: y mandatory;}}header, article{min-height: 100vh;}header{background: var(--bg-primary);}article:nth-of-type(odd){background: var(--bg-secondary);}article:nth-of-type(even){background: var(--bg-primary);}header, article, footer, .break{position: relative; overflow-x: hidden; overflow-y: auto; scroll-snap-align: start; padding: 0 1.5rem;}footer, .break{min-height: min(20rem, 25vh); align-content: center; align-items: center; background: var(--bg-break); color: var(--text-secondary);}article, footer, .break{display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap;}header, article{--bottom-decoration-height: 3rem; padding-bottom: calc(var(--bottom-decoration-height) + 1rem);}header::before, header::after, article::before, article::after{position: absolute; content: ''; background: var(--brand); height: var(--bottom-decoration-height); bottom: 0; transform: skew(-30deg);}header::before, article::before{right: -3rem; width: 50vw;}header::after, article::after{right: 55vw; width: 10vw;} header{display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: center;}header h1{display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: min(20vw, 96pt); color: var(--brand);}header h1 img{width: min(14rem, 80vw); height: min(14rem, 80vw); object-fit: contain;}header p{font-weight: bold; font-size: 18pt; text-align: center;}@media only screen and (min-width: 1000px){header h1{flex-direction: row;}header h1 img{margin-right: 2rem;}header p{font-size: 32pt;}} article{padding-top: 5rem;}.services, .product-info{width: 40rem; max-width: 100%;}.product-info h3{color: var(--brand);}.illustration{display: block; padding: 0 2rem; width: 30rem; max-width: 100%;}@media only screen and (max-width: 1199px){article{flex-direction: column; align-items: center;}.illustration{margin: 3rem 0; order: 999}} .timeline{--item-width: 90; --item-top: 4rem; --item-bottom: 2rem; --counter-size: 3rem; --counter-border: 5px; padding: 0 0.5rem; margin-top: 3rem;}.timeline div{position: relative; width: calc(var(--item-width) * 1%); margin-top: 0; padding-top: var(--item-top); padding-bottom: var(--item-bottom);}.timeline div:nth-of-type(odd){margin-left: calc(100% - var(--item-width) * 1%); padding-left: 1rem;}.timeline div:nth-of-type(even){margin-left: 0; padding-right: 1rem;}.timeline div::before{content: ""; position: absolute; top: calc(var(--item-bottom) * -0.5); width: calc((2 * var(--item-width) - 100) / var(--item-width) * 100% + var(--counter-size)); height: 100%; border-bottom: var(--counter-border) solid var(--brand-darker); pointer-events: none;}.timeline div:nth-of-type(odd)::before{left: calc(var(--counter-size) * -0.5); border-left: var(--counter-border) solid var(--brand-darker);}.timeline div:nth-of-type(even)::before{left: auto; right: calc(var(--counter-size) * -0.5); border-right: var(--counter-border) solid var(--brand-darker);}.timeline div:first-child::before{top: calc(var(--item-bottom) * 0.5); height: calc(100% - var(--item-bottom));}.timeline div:last-child::before{height: var(--item-bottom); border-bottom: none;}.timeline div::after{position: absolute; top: 0; content: attr(data-label); color: var(--text-secondary); background: var(--brand-darker); min-width: var(--counter-size); padding: 0 1.5rem; height: var(--counter-size); overflow: none; display: flex; justify-content: center; align-items: center;}.timeline div:nth-of-type(even)::after{right: 0; transform: translateX(var(--counter-size)); clip-path: polygon(100% 0%, calc(100% - 0.25 * var(--counter-size)) 50%, 100% 100%, calc(0.25 * var(--counter-size)) 100%, 0% 50%, calc(0.25 * var(--counter-size)) 0%);}.timeline div:nth-of-type(odd)::after{left: 0; transform: translateX(calc(var(--counter-size) * -1)); clip-path: polygon(calc(100% - 0.25 * var(--counter-size)) 0%, 100% 50%, calc(100% - 0.25 * var(--counter-size)) 100%, 0% 100%, calc(0.25 * var(--counter-size)) 50%, 0% 0%);}@media only screen and (min-width: 800px){.timeline{--item-width: 55; --item-top: 0; max-height: max(50vh, 30rem); overflow-x: hidden; overflow-y: auto; overflow-y: overlay; -ms-overflow-style: -ms-autohiding-scrollbar;}.timeline div:nth-of-type(even)::after{transform: translateX(100%);}.timeline div:nth-of-type(odd)::after{transform: translateX(-100%);}} footer{flex-direction: column; align-items: center;}footer a{color: inherit; text-decoration: none;}footer .legal{padding-top: 2rem;} body{overflow-y: auto; overflow-y: overlay; -ms-overflow-style: -ms-autohiding-scrollbar;}::-webkit-scrollbar{width: 8px;}::-webkit-scrollbar-track{background: none;}::-webkit-scrollbar-thumb{background: var(--brand); border-radius: 100vw;}::-webkit-scrollbar-thumb:hover{background: var(--brand-darker);} *{scrollbar-color: var(--brand);}</style></head><body> <header> <h1><img class="logo" src="image/kodecat.png" alt="KodeCat logo"> KodeCat</h1> <p></p></header> <article id="services"> <section class="services"> <h3>Services for databases, data processing and analysis, and AI-driven automation.</h3> <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</p><p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</p><p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla!</p></section> <img class="illustration" src="image/illustration-services.png" alt="" role="presentation"> </article> <section class="break"><h2>Our products</h2></section> <article id="audience-measurement"> <img class="illustration" src="image/illustration-audience.png" alt="" role="presentation"> <section class="product-info"> <h3>TV audience measurement</h3> <p>Bla bla, we got great data.<br>Bla bla. Bla bla.</p><section class="timeline"> <div data-label="Feb 2022"> <h4>Market test</h4> <p>Bla bla. Test panel in Algeria.</p></div><div data-label="Mar 2022"> <h4>Offer data in partnership with Global MMK.</h4> <p>Bla bla.</p></div><div data-label="Apr 2022"> <h4>Open platform to broader market.</h4> <p>Bla bla.</p></div><div data-label="Test"> <h4>Test: Long timeline.</h4> <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p></div><div data-label="Test"> <h4>Test: Long timeline.</h4> <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p></div><div data-label="Test"> <h4>Test: Long timeline.</h4> <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p></div><div data-label="Test"> <h4>Test: Long timeline.</h4> <p>A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text. A lot of text.</p></div></section> </section> </article> <article id="matchmaker"> <section class="product-info"> <h3>MatchMaker: automated media tracking</h3> <p>Easy and fast system to track Advertising Campaigns or inserts on relevant Media platforms with a full range of visual statistics.</p><section class="timeline"> <div data-label="2021 Q1"> <h4>Established partnership with Global MMK in the sports media market.</h4> </div><div data-label="2021 Q3"> <h4>Text detection.</h4> <p>Bla bla.</p></div><div data-label="2022 Q2"> <h4>Content classification and logo detection.</h4> <p>Bla bla.</p></div></section> </section> <img class="illustration" src="image/illustration-matchmaker.png" alt="" role="presentation"> </article> <article id="archive"> <img class="illustration" src="image/illustration-archive.png" alt="" role="presentation"> <section class="product-info"> <h3>Archive: database for performance-oriented developers</h3> <p>Bla bla, it's fast.</p><section class="timeline"> <div data-label="2021 Q4"> <h4>Developed for internal use.</h4> <p>Bla bla.</p></div><div data-label="2022 Q1"> <h4>Something something something.</h4> <p>Bla bla.</p></div><div data-label="2022 Q2"> <h4>Something something something.</h4> <p>Bla bla.</p></div></section> </section> </article> <footer id="contact"> <div> <p> <i class="fa fa-envelope"></i> <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#107;&#111;&#100;&#101;&#099;&#097;&#116;&#046;&#099;&#111;&#109;">&#105;&#110;&#102;&#111;&#064;&#107;&#111;&#100;&#101;&#099;&#097;&#116;&#046;&#099;&#111;&#109;</a> </p><p> <i class="fa fa-phone-alt"></i> <a href="tel:&#048;&#049;&#050;&#051;&#052;&#053;&#054;&#055;&#056;&#057;">&#048;&#049;&#050;&#051;&#052;&#053;&#054;&#055;&#056;&#057;</a> </p></div><p class="legal"> Copyright © 2021 KodeCat. Legal shit, trademarks, registered names. </p></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KodeCat. Services for databases, data processing and analysis, and AI-driven automation.">
+  <title>KodeCat</title>
+
+  <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    /* typography */
+    :root {
+      --text-primary:   #000000;
+      --text-secondary: #ffffff;
+      --bg-primary:     #ebeefb;
+      --bg-secondary:   #ffffff;
+      --bg-break:       #333333;
+      --brand:          #7f90e2;
+      --brand-darker:   #5a70d9;
+      --scroll-track:   var(--bg-primary);
+    }
+
+    body {
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      font-family: 'Arial', sans-serif;
+      font-size: 16pt;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+      font-weight: bold;
+    }
+    h1 { font-size: 96pt; line-height: 1.1; padding: 4rem 0; }
+    h2 { font-size: 48pt; line-height: 1.2; padding: 3rem 0; }
+    h3 { font-size: 36pt; line-height: 1.2; padding: 2rem 0; }
+    h4 { font-size: 18pt; line-height: 1.5; padding-bottom: 1rem; }
+
+    @media only screen and (max-width: 479px) {
+      h2 { font-size: 36pt; line-height: 1.2; padding: 3rem 0; }
+      h3 { font-size: 24pt; line-height: 1.2; padding: 2rem 0; }
+      h4 { font-size: 18pt; line-height: 1.5; padding-bottom: 1rem; }
+    }
+
+    p {
+      overflow-wrap: break-word;
+      padding-bottom: 1rem;
+    }
+
+    /* general layout */
+    @media only screen and (min-width: 1200px) {
+      html {
+        /*scroll-snap-type: y mandatory;*/
+      }
+    }
+
+    header, article           { min-height: 100vh;               }
+    header                    { background: var(--bg-primary);   }
+    article:nth-of-type(odd)  { background: var(--bg-secondary); --scroll-track: var(--bg-secondary); }
+    article:nth-of-type(even) { background: var(--bg-primary);   --scroll-track: var(--bg-primary);   }
+
+    header, article, footer, .break {
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scroll-snap-align: start;
+      padding: 0 1.5rem;
+    }
+
+    footer, .break {
+      min-height: min(20rem, 25vh);
+      align-content: center;
+      align-items: center;
+      background: var(--bg-break);
+      color: var(--text-secondary);
+    }
+
+    article, footer, .break {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    header, article {
+      --bottom-decoration-height: 3rem;
+      padding-bottom: calc(var(--bottom-decoration-height) + 1rem);
+    }
+
+    header::before, header::after,
+    article::before, article::after {
+      position: absolute;
+      content: '';
+      background: var(--brand);
+      height: var(--bottom-decoration-height);
+      bottom: 0;
+      transform: skew(-30deg);
+    }
+    header::before, article::before {
+      right: -3rem;
+      width: 50vw;
+    }
+    header::after, article::after {
+      right: 55vw;
+      width: 10vw;
+    }
+
+    /* header layout */
+    header {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header h1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: min(20vw, 96pt);
+      color: var(--brand);
+    }
+
+    header h1 img {
+      width:  min(14rem, 80vw);
+      height: min(14rem, 80vw);
+      object-fit: contain;
+    }
+
+    header p {
+      font-weight: bold;
+      font-size: 18pt;
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 1000px) {
+      header h1 {
+        flex-direction: row;
+      }
+      header h1 img {
+        margin-right: 2rem;
+      }
+      header p {
+        font-size: 32pt;
+      }
+    }
+
+    /* article layout */
+    article {
+      padding-top: 5rem;
+      align-items: stretch;
+    }
+
+    .services, .product-info {
+      width: 40rem;
+      max-width: 100%;
+    }
+
+    .product-info h3 {
+      color: var(--brand);
+    }
+
+    .illustration {
+      display: block;
+      padding: 0 2rem;
+      width: 30rem;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    @media only screen and (max-width: 1199px) {
+      article {
+        flex-direction: column;
+        align-items: center;
+      }
+      .illustration {
+        margin: 3rem 0;
+        order: 999
+      }
+    }
+
+    /* timeline */
+    .timeline {
+      --item-width: 90;
+      --item-top: 4rem;
+      --item-bottom: 2rem;
+      --counter-size: 3rem;
+      --counter-border: 5px;
+      padding: 0 0.5rem;
+      margin-top: 3rem;
+    }
+
+    .timeline div {
+      position: relative;
+      width: calc(var(--item-width) * 1%);
+      margin-top: 0;
+      padding-top:    var(--item-top);
+      padding-bottom: var(--item-bottom);
+    }
+    .timeline div:nth-of-type(odd) {
+      margin-left: calc(100% - var(--item-width) * 1%);
+      padding-left: 1rem;
+    }
+    .timeline div:nth-of-type(even) {
+      margin-left: 0;
+      padding-right: 1rem;
+    }
+
+    .timeline div::before {
+      content: "";
+      position: absolute;
+      top: calc(var(--item-bottom) * -0.5);
+      width: calc((2 * var(--item-width) - 100) / var(--item-width) * 100% + var(--counter-size));
+      height: 100%;
+      border-bottom: var(--counter-border) solid var(--brand-darker);
+      pointer-events: none;
+    }
+    .timeline div:nth-of-type(odd)::before {
+      left: calc(var(--counter-size) * -0.5);
+      border-left: var(--counter-border) solid var(--brand-darker);
+    }
+    .timeline div:nth-of-type(even)::before {
+      left: auto;
+      right: calc(var(--counter-size) * -0.5);
+      border-right: var(--counter-border) solid var(--brand-darker);
+    }
+    .timeline div:first-child::before {
+      top: calc(var(--item-bottom) * 0.5);
+      height: calc(100% - var(--item-bottom));
+    }
+    .timeline div:last-child::before {
+      height: var(--item-bottom);
+      border-bottom: none;
+    }
+
+    .timeline div::after {
+      position: absolute;
+      top: 0;
+      content: attr(data-label);
+
+      color: var(--text-secondary);
+      background: var(--brand-darker);
+      min-width: var(--counter-size);
+      padding: 0 1.5rem;
+      height: var(--counter-size);
+
+      overflow: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .timeline div:nth-of-type(even)::after {
+      right: 0;
+      transform: translateX(var(--counter-size));
+      clip-path: polygon(100% 0%, calc(100% - 0.25 * var(--counter-size)) 50%, 100% 100%, calc(0.25 * var(--counter-size)) 100%, 0% 50%, calc(0.25 * var(--counter-size)) 0%);
+    }
+    .timeline div:nth-of-type(odd)::after {
+      left: 0;
+      transform: translateX(calc(var(--counter-size) * -1));
+      clip-path: polygon(calc(100% - 0.25 * var(--counter-size)) 0%, 100% 50%, calc(100% - 0.25 * var(--counter-size)) 100%, 0% 100%, calc(0.25 * var(--counter-size)) 50%, 0% 0%);
+    }
+
+    @media only screen and (min-width: 800px) {
+      .timeline {
+        --item-width: 55;
+        --item-top: 0;
+
+        /*max-height: max(50vh, 30rem);*/
+        overflow-x: hidden;
+        /*overflow-y: auto;*/  /* in case overlay isn't supported */
+        /*overflow-y: overlay;*/
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+      }
+
+      .timeline div:nth-of-type(even)::after {
+        transform: translateX(100%);
+      }
+      .timeline div:nth-of-type(odd)::after {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* footer layout */
+    footer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer .legal {
+      padding-top: 2rem;
+    }
+
+    /* scrollbar styling (Chromium) */
+    body {
+      overflow-y: auto;  /* in case overlay isn't supported */
+      overflow-y: overlay;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: none; }
+    ::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 100vw; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--brand-darker); }
+    /* scrollbar styling (Firefox)  */
+    * { scrollbar-color: var(--brand) var(--scroll-track); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><img class="logo" src="image/kodecat.png" alt="KodeCat logo"> KodeCat</h1>
+    <p></p>
+  </header>
+
+  <article id="services">
+    <section class="services">
+      <h3>About us</h3>
+      <p>We are a startup company offering services for</p>
+
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</p>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.</p>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla!</p>
+
+      <br>
+
+      <h4>AI-driven media analysis</h4>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla!</p>
+
+      <h4>Data processing, analysis, and statistics</h4>
+      <p>Bla bla bla bla bla bla bla bla bla bla bla bla bla bla!</p>
+
+      <h4>Worldwide data collection</h4>
+      <p>Web scraping. Bla bla bla bla bla bla bla bla bla bla bla bla bla bla!</p>
+    </section>
+    <img class="illustration" src="image/illustration-services.png" alt="" role="presentation">
+  </article>
+
+  <article id="audience-measurement">
+    <img class="illustration" src="image/illustration-audience.png" alt="" role="presentation">
+    <section class="product-info">
+      <h3>TV Audience Measurement</h3>
+      <p>KodeCat and Global MMK developed a unique app-based AI TV audience measurement solution. With this, we can provide up-to-the-second data to measure TV ratings. Once a country panel is verified and goes to market, our clients can access audience-specific data through our databases and measure, for example, the ROI of advertising.</p>
+
+      <h4>First Target</h4>
+      <p>Our first focus is on the African market. Due to the current lack of data and the gaps, it is difficult to obtain reliable data. Here, our independent solution for the African markets will be a quantum leap and open up many new business opportunities. </p>
+
+      <h4>Process</h4>
+      <p>Global MMK and KodeCat recruit representative panelists to collect regular audience data.</p>
+      <p>In-depth data on demographics, habits, preferred brands, and more are automatically collected</p>
+      <p>Audience measurement runs on a second by the second rhythm and is immediately available in the Global MMK and KodeCat database and dashboards with various filter and export options.</p>
+    </section>
+    <section class="timeline">
+      <div data-label="Jan-Feb 2022">
+        <h4>Development</h4>
+        <p>Final steps in programming.</p>
+      </div>
+      <div data-label="Feb 2022">
+        <h4>Market Test</h4>
+        <p>Verification of the functionality and receiving first data.</p>
+      </div>
+      <div data-label="Mar 2022">
+        <h4>Verifying Data</h4>
+        <p>Checking the reliability of received data & last updates before going officially online.</p>
+      </div>
+      <div data-label="Apr 2022">
+        <h4>Market Availability</h4>
+        <p>Partnership with Global MMK.</p>
+      </div>
+    </section>
+  </article>
+
+  <article id="tvguide">
+    <img class="illustration" src="image/illustration-archive.png" alt="" role="presentation">
+    <section class="product-info">
+      <h3>Global TV Guide</h3>
+      <p>Bla bla, it's fast.</p>
+
+      <p><a href="www.global-mmk.com">Global MMK</a> has exclusive rights for broadcast information in the Sports sector.</p>
+    </section>
+  </article>
+
+  <article id="matchmaker">
+    <section class="product-info">
+      <h3>MatchMaker: automated media tracking</h3>
+      <p>Easy and fast system to track Advertising Campaigns or inserts on relevant Media platforms with a full range of visual statistics.</p>
+
+      <section class="timeline">
+        <div data-label="2021 Q1">
+          <h4>Established partnership with Global MMK in the sports media market.</h4>
+        </div>
+        <div data-label="2021 Q3">
+          <h4>Text detection.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="2022 Q2">
+          <h4>Content classification and logo detection.</h4>
+          <p>Bla bla.</p>
+        </div>
+      </section>
+    </section>
+    <img class="illustration" src="image/illustration-matchmaker.png" alt="" role="presentation">
+  </article>
+
+
+  <!--
+  <article id="archive">
+    <img class="illustration" src="image/illustration-archive.png" alt="" role="presentation">
+    <section class="product-info">
+      <h3>Archive: database for performance-oriented developers</h3>
+      <p>Bla bla, it's fast.</p>
+
+      <section class="timeline">
+        <div data-label="2021 Q4">
+          <h4>Developed for internal use.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="2022 Q1">
+          <h4>Something something something.</h4>
+          <p>Bla bla.</p>
+        </div>
+        <div data-label="2022 Q2">
+          <h4>Something something something.</h4>
+          <p>Bla bla.</p>
+        </div>
+      </section>
+    </section>
+  </article>
+  -->
+
+  <footer id="contact">
+    <div>
+      <p>
+        <i class="fa fa-envelope"></i>
+        <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#107;&#111;&#100;&#101;&#099;&#097;&#116;&#046;&#099;&#111;&#109;">&#105;&#110;&#102;&#111;&#064;&#107;&#111;&#100;&#101;&#099;&#097;&#116;&#046;&#099;&#111;&#109;</a>
+      </p>
+      <p>
+        <i class="fa fa-phone-alt"></i>
+        <a href="tel:&#048;&#049;&#050;&#051;&#052;&#053;&#054;&#055;&#056;&#057;">&#048;&#049;&#050;&#051;&#052;&#053;&#054;&#055;&#056;&#057;</a>
+      </p>
+    </div>
+    <p class="legal">
+      Copyright  © 2021 KodeCat. Legal shit, trademarks, registered names.
+    </p>
+  </footer>
+</body>
+</html>
